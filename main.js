@@ -1,5 +1,5 @@
 // Default Books
-const defaultBooks = [
+let defaultBooks = [
     {
       id: '1',
       title: 'Alexander Great',
@@ -126,11 +126,10 @@ localStorage.setItem('books', JSON.stringify(books));
 
   // Destroy book
   function deleteBook(id) {
-    if (confirm('Are you sure you want to delete this book?')) {
       books = books.filter(b => b.id !== id);
+      defaultBooks = defaultBooks.filter(b => b.id !== id);
       saveBooks();
       renderBooks();
-    }
   }
 
   // Audit book
