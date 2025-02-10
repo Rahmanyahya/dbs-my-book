@@ -1,10 +1,44 @@
+// Default Books
+const defaultBooks = [
+    {
+      id: '1',
+      title: 'Alexander Great',
+      author: 'Jeje',
+      year: 1935,
+      isComplete: true
+    },
+    {
+      id: '2',
+      title: 'Anonymous',
+      author: 'Hackers',
+      year: 1980,
+      isComplete: true
+    },
+    {
+      id: '3',
+      title: 'John The Ripper',
+      author: 'Salinger',
+      year: 1961,
+      isComplete: false
+    },
+    {
+      id: '4',
+      title: 'WW II',
+      author: 'Orwell',
+      year: 1949,
+      isComplete: false
+    }
+  ];
+
+
 // Generate random id 4 digit
 function generateId() {
   return Math.floor(1000 + Math.random() * 9000).toString();
 }
 // Local Storage methods
-  let books = JSON.parse(localStorage.getItem('books')) || [];
-
+let books = JSON.parse(localStorage.getItem('books')) || defaultBooks;
+localStorage.setItem('books', JSON.stringify(books));
+  
   // DOM Elements
   const bookForm = document.getElementById('bookForm');
   const searchForm = document.getElementById('searchBook');
@@ -61,7 +95,7 @@ function generateId() {
       <p data-testid="bookItemYear">Year: ${book.year}</p>
       <div class="button-group">
         <button data-testid="bookItemIsCompleteButton">
-          ${book.isComplete ? 'Selesai' : 'Belum Selesai'}
+          ${book.isComplete ? 'Belum Selesai' : 'Selesai'}
         </button>
         <button data-testid="bookItemEditButton">Edit Buku</button>
         <button data-testid="bookItemDeleteButton">Hapus Buku</button>
